@@ -1,0 +1,34 @@
+1,开始调试的方法：
+	1，	gdb 可执行文件 -x abc.txt  -----------在abc.txt中写入需要放置断点的位置
+	2，	gdb      >>>>>>>>>>>>>>>  file 可执行文件
+
+2,动态修改断点方法 
+	添加断点 	break function_name 或者  break 文件名:行号
+	删除断点 	delete ...
+
+3,查看调用堆栈
+	where或者backtrace
+
+
+
+4,完成当前函数调用然后暂停
+	finish
+
+5,查看所有断点信息
+	info breakpoints
+
+6,使在符合某个条件的情况下暂停运行
+	//main.c
+	int main(void)			//1
+	{				//2
+		int sum=0,i=0;		//3
+		for(;i<10;++i)		//4
+			sum += i;	//5
+		return 0;		//6
+	}				//7
+	break main.c:5 if i>=3  //在i>=3的情况下在第5行会暂停运行
+
+7,在某个变量变化时暂停运行
+	代码同上
+	watch i	//在每次执行++i(第4行)的时候，会暂停执行。	
+
